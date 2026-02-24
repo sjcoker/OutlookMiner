@@ -11,6 +11,8 @@ A highly customized Microsoft Outlook VBA macro designed to process massive emai
 * **Registry Memory & Migration:** Automatically remembers your root save location (e.g., `S:\`) across sessions. If you change the destination to a new drive, it will intelligently offer to migrate your custom routing rules to the new location.
 * **Ghost Attachment Protection:** Bypasses and logs "forever new" Outlook calendar items (like `.ics` files) that constantly refresh their modified dates, ensuring accurate extraction counts.
 
+![Pre-Flight Summary](Summary.png) 
+
 ## Prerequisites
 * Microsoft Outlook (Windows desktop client)
 * Windows Operating System (Required for FileSystemObject and Windows Registry API calls)
