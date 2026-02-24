@@ -1,7 +1,7 @@
 ' =========================================================================
-' AUTHORSHIP & HISTORY:
+' COKER'S OUTLOOK MINER (2026)
 ' Architected by Steven James Coker. Dynamic text extraction engine and 
-' automated file routing developed in collaboration with Google's AI (2026).
+' automated file routing developed in collaboration with Google's AI.
 '
 ' LICENSE (DONATIONWARE):
 ' This macro is free for non-commercial use. You may freely copy and
@@ -523,4 +523,5 @@ Sub BuildFolderTree(ByVal sPath As String, fso As Object)
         If Not fso.FolderExists(sParent) And sParent <> "" Then BuildFolderTree sParent, fso
         fso.CreateFolder sPath
     End If
+
 End Sub
