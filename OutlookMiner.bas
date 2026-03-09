@@ -51,7 +51,8 @@ Sub Attachments_Email()
     Dim StartTime As Double
     Dim SyncTimestamp As Date
     StartTime = Timer
-    SyncTimestamp = Now ' Captures the exact second the macro is launched	Dim olNs As Outlook.NameSpace
+    SyncTimestamp = Now ' Captures the exact second the macro is launched	
+	Dim olNs As Outlook.NameSpace
     Dim olStartFolder As Outlook.MAPIFolder
     Dim fso As Object, txtStream As Object
     Dim sRootPath As String, sOldRoot As String, sOldRouteIni As String
@@ -419,8 +420,8 @@ Private Sub Process_Items_Only(olFolder As Outlook.MAPIFolder, ByRef streamObj A
     Dim olItem As Object, colItems As Outlook.Items, olAtt As Outlook.Attachment
     Dim sDatePrefix As String, sSafeName As String, itemDate As Date
     Dim sSubject As String, sFrom As String, sSent As String, sTo As String
-    Dim loopCount As Long ' <--- ADD THIS
-    loopCount = 0         ' <--- ADD THIS
+    Dim loopCount As Long
+    loopCount = 0
 
     Set colItems = olFolder.Items
     On Error Resume Next
@@ -498,8 +499,8 @@ Private Sub Process_Items_Only(olFolder As Outlook.MAPIFolder, ByRef streamObj A
         End If
         On Error GoTo 0
         
-        loopCount = loopCount + 1                 ' <--- ADD THIS
-        If loopCount Mod 100 = 0 Then DoEvents    ' <--- ADD THIS
+        loopCount = loopCount + 1
+        If loopCount Mod 100 = 0 Then DoEvents
         
     Next olItem
 End Sub
