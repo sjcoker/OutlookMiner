@@ -7,7 +7,7 @@ A highly customized Microsoft Outlook VBA macro designed to process massive emai
 * **Privacy Isolation:** Automatically quarantines any folder starting with an underscore (e.g., `_Private`). These folders generate mathematically isolated text streams, preventing sensitive data from spilling into your primary LLM ingest files.
 * **Registry Memory & Migration:** Automatically remembers your root save location (e.g., `S:\`) across sessions. If you change the destination to a new drive, it will intelligently offer to migrate your custom routing rules to the new location.
 * **Ghost Attachment Protection:** Bypasses and logs "forever new" Outlook calendar items (like `.ics` files) that constantly refresh their modified dates, ensuring accurate extraction counts.
-* **Zero-Data-Loss Incremental Syncing:** The macro remembers the exact timestamp of when your extraction started. On subsequent runs, it only processes attachments newer than that cutoff date. By locking the time at the start rather than the finish, it guarantees that any live emails arriving in the background while the macro is running are safely caught in the next extraction cycle.
+* **Zero-Data-Loss Incremental Syncing:** The macro remembers the exact timestamp of when your extraction started. On subsequent runs, it incrementally syncs attachments by only extracting files newer than that cutoff date. (Note: To maintain perfect mathematical file-size chunking, email body text is always given a high-speed 100% fresh rewrite, while heavy attachments are skipped to save massive amounts of processing time)..
 
 ![Pre-Flight Summary](Summary.png) 
 
