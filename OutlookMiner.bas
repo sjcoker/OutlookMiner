@@ -1,5 +1,5 @@
 ' =========================================================================
-' COKER'S OUTLOOK MINER (2026)
+' COKER'S OUTLOOK MINER (2026) version 2.
 ' Architected by Steven James Coker. Dynamic text extraction engine and 
 ' automated file routing developed in collaboration with Google's AI.
 '
@@ -31,7 +31,13 @@
 ' MACRO: ATTACHMENTS_EMAIL (UNIVERSAL SYNC PIPELINE)
 ' =========================================================================
 Sub Attachments_Email()
-    Dim olNs As Outlook.NameSpace
+    ' ---------------------------------------------------------
+    ' START THE STOPWATCH & LOCK THE SYNC TIMESTAMP
+    ' ---------------------------------------------------------
+    Dim StartTime As Double
+    Dim SyncTimestamp As Date
+    StartTime = Timer
+    SyncTimestamp = Now ' Captures the exact second the macro is launched	Dim olNs As Outlook.NameSpace
     Dim olStartFolder As Outlook.MAPIFolder
     Dim fso As Object, txtStream As Object
     Dim sRootPath As String, sOldRoot As String, sOldRouteIni As String
@@ -228,12 +234,27 @@ Sub Attachments_Email()
     ' --- LAUNCH DYNAMIC ENGINE ---
     Process_Folder_Tree olStartFolder, sTextRoot, sAttRoot, bNewestFirst, fso, emailCount, attCount, dtCutoff, 1, maxDepth, lThresholdBytes, sRouteIni, , 1, "", "", "", False
 
-    ' Write Timestamp to Machine INI
-    WriteINI sProfileName, "LastSync", Format(Now, "yyyy-mm-dd hh:mm:ss"), sSyncIni
+	' Write the START timestamp to Machine INI (Prevents blind spots)
+    WriteINI sProfileName, "LastSync", Format(SyncTimestamp, "yyyy-mm-dd hh:mm:ss"), sSyncIni
 
-    MsgBox "Success! Emails: " & emailCount & vbCrLf & "Attachments: " & attCount & vbCrLf & _
-           "Text Saved To: Emails\Depth_" & sDepthLabel, vbInformation
+    ' ---------------------------------------------------------
+    ' STOP THE CLOCK AND CALCULATE TOTAL TIME
+    ' ---------------------------------------------------------
+    Dim TotalSeconds As Double
+    Dim MinutesElapsed As String
+    TotalSeconds = Timer - StartTime
+    MinutesElapsed = Format(TotalSeconds / 60, "0.00")
+
+    ' ---------------------------------------------------------
+    ' FINAL SUCCESS MESSAGE
+    ' ---------------------------------------------------------
+    MsgBox "Success! Emails: " & emailCount & vbCrLf & _
+           "Attachments: " & attCount & vbCrLf & _
+           "Text Saved To: Emails\Depth_" & sDepthLabel & vbCrLf & vbCrLf & _
+           "Total processing time: " & MinutesElapsed & " minutes.", vbInformation, "Coker's Outlook Miner"
+    
     Exit Sub
+
 ErrorHandler:
     MsgBox "Error: " & Err.Description, vbCritical
 End Sub
@@ -382,6 +403,8 @@ Private Sub Process_Items_Only(olFolder As Outlook.MAPIFolder, ByRef streamObj A
     Dim olItem As Object, colItems As Outlook.Items, olAtt As Outlook.Attachment
     Dim sDatePrefix As String, sSafeName As String, itemDate As Date
     Dim sSubject As String, sFrom As String, sSent As String, sTo As String
+    Dim loopCount As Long ' <--- ADD THIS
+    loopCount = 0         ' <--- ADD THIS
 
     Set colItems = olFolder.Items
     On Error Resume Next
@@ -458,7 +481,10 @@ Private Sub Process_Items_Only(olFolder As Outlook.MAPIFolder, ByRef streamObj A
             Err.Clear
         End If
         On Error GoTo 0
-        DoEvents
+        
+        loopCount = loopCount + 1                 ' <--- ADD THIS
+        If loopCount Mod 100 = 0 Then DoEvents    ' <--- ADD THIS
+        
     Next olItem
 End Sub
 
@@ -523,5 +549,4 @@ Sub BuildFolderTree(ByVal sPath As String, fso As Object)
         If Not fso.FolderExists(sParent) And sParent <> "" Then BuildFolderTree sParent, fso
         fso.CreateFolder sPath
     End If
-
 End Sub
