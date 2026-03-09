@@ -12,7 +12,19 @@
 '   - PayPal:   paypal.com/paypalme/SJCoker
 '   - GoFundMe: gofundme.com/f/genetic-genealogy
 ' =========================================================================
-
+' Installation Instructions
+' Download the OutlookMiner.bas file from https://github.com/sjcoker/OutlookMiner.
+' Open Outlook and press ALT + F11 to open the VBA Editor.
+' In the project tree on the left, right-click Project1 -> Insert -> Module.
+' Open the downloaded .bas file in any text editor (like Notepad), copy the entire contents, and paste them into the blank module window.
+' Close the VBA Editor.
+' =========================================================================
+' How to Use
+' Run the macro by pressing ALT + F8 in Outlook, selecting Attachments_Email, and clicking Run.
+' Select the starting Outlook folder when prompted.
+' Follow the on-screen configuration menus to set your Root Destination, custom Traffic Controller routes, extraction depth, and Chunking MB limit.
+' Review the Pre-Flight Summary.
+' Click OK to execute the extraction.
 ' =========================================================================
 ' WINDOWS API DECLARATIONS FOR INI MANAGEMENT (MUST BE AT VERY TOP OF MODULE)
 ' NOTE: If you are on a modern 64-bit system, the lines under #Else may appear 
