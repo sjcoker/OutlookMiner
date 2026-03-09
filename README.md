@@ -1,5 +1,5 @@
 # Coker's Outlook Miner (Attachments & Email Extractor)
-A highly customized Microsoft Outlook VBA macro designed to process massive email archives (e.g., 25+ years, 400,000+ items). This ETL (Extract, Transform, Load) engine dynamically extracts attachments, routes them to custom folders, and mathematically chunks email body text into AI-ready `.txt` files perfectly sized for ingest by tools like Google NotebookLM.
+A highly customized Microsoft Outlook VBA macro designed to process massive email archives (e.g., 25+ years, 400,000+ items). This ETL (Extract, Transform, Load) engine dynamically extracts attachments, routes them to custom folders, and mathematically chunks email body text into AI-ready `.txt` files perfectly sized for use in tools like Google NotebookLM.
 
 ## Key Features
 * **Universal Chunking Dial:** Set a specific MB limit (e.g., 2.8 MB) for output text files. The macro seamlessly splits massive email threads across sequential text files to prevent hitting the file-size limits of AI platforms.
