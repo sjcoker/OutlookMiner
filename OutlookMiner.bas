@@ -230,7 +230,8 @@ Sub Attachments_Email()
                "Sync Dates: " & sSyncIni & vbCrLf & _
                "Routing Rules: " & sRouteIni & vbCrLf & vbCrLf & _
                "Click OK to begin the extraction, or Cancel to safely abort." & vbCrLf & _
-               "A full extraction can take a while. Grab a cup and relax." & vbCrLf & vbCrLf & _
+               "A full extraction can take a while. Grab a cup and relax." & vbCrLf & _
+               "I'll give you a popup notice when extraction finishes." & vbCrLf & vbCrLf & _
                "------------------------------------------------" & vbCrLf & _
                "Attachments & Email Extractor (2026)" & vbCrLf & _
                "By Steven James Coker using Google's AI" & vbCrLf & _
