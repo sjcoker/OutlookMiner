@@ -1,7 +1,8 @@
 ' =========================================================================
 ' COKER'S OUTLOOK MINER (2026) version 2.
 ' Architected by Steven James Coker. Dynamic text extraction engine and 
-' automated file routing developed in collaboration with Google's AI.
+' automated file routing developed using Google's AI.
+' Copyright by Steven James Coker, all rights reserved. 
 '
 ' LICENSE (DONATIONWARE):
 ' This macro is free for non-commercial use. You may freely copy and
@@ -11,6 +12,7 @@
 ' If this tool helps streamline your research, please consider a donation:
 '   - PayPal:   paypal.com/paypalme/SJCoker
 '   - GoFundMe: gofundme.com/f/genetic-genealogy
+' Contact: SJCoker1 using either Yahoo or Gmail. 
 ' =========================================================================
 ' Installation Instructions
 ' Download the OutlookMiner.bas file from https://github.com/sjcoker/OutlookMiner.
@@ -227,11 +229,12 @@ Sub Attachments_Email()
                "System Files Location:" & vbCrLf & _
                "Sync Dates: " & sSyncIni & vbCrLf & _
                "Routing Rules: " & sRouteIni & vbCrLf & vbCrLf & _
-               "Click OK to execute the extraction, or Cancel to safely abort." & vbCrLf & vbCrLf & _
+               "Click OK to begin the extraction, or Cancel to safely abort." & vbCrLf & _
+               "A full extraction can take a while. Grab a cup and relax." & vbCrLf & vbCrLf & _
                "------------------------------------------------" & vbCrLf & _
                "Attachments & Email Extractor (2026)" & vbCrLf & _
-               "By Steven James Coker & Google's AI" & vbCrLf & _
-               "Donationware: See code header for support links."
+               "By Steven James Coker using Google's AI" & vbCrLf & _
+               "Donationware: PayPal.com/paypalme/SJCoker."
                
     If MsgBox(sSummary, vbOKCancel + vbInformation, "Pre-Flight Summary") = vbCancel Then Exit Sub
 
