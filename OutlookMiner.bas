@@ -245,7 +245,7 @@ Sub Attachments_Email()
     
     If Not fso.FolderExists(sBaseFolder & "Emails\") Then fso.CreateFolder sBaseFolder & "Emails\"
     ' Appends a timestamp to create a pristine, AV-safe archive folder for every run
-    sTextRoot = sBaseFolder & "Emails\Depth_" & sDepthLabel & "_Run_" & Format(Now, "yyyymmdd_hhmm") & "\"
+    sTextRoot = sBaseFolder & "Emails\Depth_" & sDepthLabel & "_" & Format(Now, "yyyymmdd_hhmm") & "\"
     If Not fso.FolderExists(sTextRoot) Then fso.CreateFolder sTextRoot
 
     ' --- LAUNCH DYNAMIC ENGINE ---
@@ -566,4 +566,5 @@ Sub BuildFolderTree(ByVal sPath As String, fso As Object)
         If Not fso.FolderExists(sParent) And sParent <> "" Then BuildFolderTree sParent, fso
         fso.CreateFolder sPath
     End If
+
 End Sub
