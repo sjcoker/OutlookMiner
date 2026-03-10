@@ -31,7 +31,7 @@ A highly customized Microsoft Outlook VBA macro designed to process massive emai
 
 ### Output Structure
 The macro will automatically generate a clean directory architecture at your designated root location:
-* `Extracts\Emails\Depth_2_3MB_Run_20260309_2214\` (Contains your sequentially numbered AI-ready text chunks)
+* `Extracts\Emails\Depth_2_3MB_20260309_2214\` (Contains your sequentially numbered AI-ready text chunks)
 * `Extracts\Attachments\` (Contains your extracted files, unless redirected by the Traffic Controller)
 * `Extracts\Custom_Routing.ini` (Stores your folder-routing rules)
 * `Extracts\Last_Sync.ini` (Stores the cutoff timestamps for your incremental syncs)
