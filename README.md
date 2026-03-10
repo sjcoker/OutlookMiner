@@ -40,6 +40,8 @@ The macro will automatically generate a clean directory architecture at your des
 * **Execution Timer Added:** The final success summary now includes a built-in stopwatch, reporting the total processing time in minutes.
 * **Hyper-Optimized Processing Speed:** Restructured the `DoEvents` Windows API calls using a modulo operator loop. The macro now runs at absolute maximum speed while still completely preventing Outlook UI freezes or "Not Responding" errors.
 * **Sync Timestamp Architecture:** Fixed a blind-spot vulnerability where emails arriving during a long extraction might be skipped on the next run. The `Last_Sync.ini` now properly locks the timestamp at macro initialization.
+* **Logic Engine Upgrade:** Universal Attachment Sync: The incremental sync system has been completely decoupled from your Depth and Chunk Size settings. The macro now uses a single, global master timestamp. You can now freely experiment with different extraction depths and text chunk sizes between runs without triggering a massive, redundant re-evaluation of old attachments.
+* **UI/UX Improvements:** Rewrote the configuration prompts and Pre-Flight Summary to eliminate cognitive dissonance. The interface now explicitly clarifies the dual-pipeline architecture: email body text always receives a 100% fresh rewrite (to maintain perfect chunk math), while the date cutoff applies strictly to bypassing heavy attachments.
 
 ## License & Support
 **Author:** Steven James Coker with code developed in collaboration with Google's AI (2026)  
