@@ -1,5 +1,5 @@
 ' =========================================================================
-' COKER'S OUTLOOK MINER (2026) version 2.
+' COKER'S OUTLOOK MINER (2026) version 2.1.
 ' Architected by Steven James Coker. Dynamic text extraction engine and 
 ' automated file routing developed using Google's AI.
 ' Copyright by Steven James Coker, all rights reserved. 
@@ -193,15 +193,14 @@ Sub Attachments_Email()
         sDepthLabel = sDepthLabel & "_0MB"
     End If
 
-    ' 5. PROFILE-SPECIFIC INI READ & DATE CUTOFF
-    sProfileName = "Depth_" & sDepthLabel
+    ' 5. UNIVERSAL SYNC INI READ & DATE CUTOFF
+    sProfileName = "Master_Sync"
     sLastSync = ReadINI(sProfileName, "LastSync", "2000-01-01 00:00:00", sSyncIni)
 
-    sLastSync = InputBox("INCREMENTAL SYNC DATE FOR: " & sProfileName & vbCrLf & vbCrLf & _
-                         "The date below was auto-populated from your last run of this specific setup." & vbCrLf & _
-                         "Attachments OLDER than this date will be skipped." & vbCrLf & _
-                         "NOTE: Text files ALWAYS do a 100% full rewrite." & vbCrLf & vbCrLf & _
-                         "OVERRIDE: Leave blank or type '0' to force extract ALL attachments.", _
+    sLastSync = InputBox("UNIVERSAL ATTACHMENT SYNC DATE:" & vbCrLf & vbCrLf & _
+                         "- The date below is the timestamp from the last time you ran this tool." & vbCrLf & _
+                         "- Email body text ALWAYS gets a 100% fresh rewrite." & vbCrLf & _
+						 "- Attachments OLDER than this date will be skipped since they downloaded already. Leave blank or type '0' to OVERRIDE and force-download ALL attachments.", _
                          "Set Cutoff Date", sLastSync)
     If StrPtr(sLastSync) = 0 Then Exit Sub
     
@@ -224,7 +223,7 @@ Sub Attachments_Email()
                "Root Destination: " & sRootPath & vbCrLf & _
                "Extraction Depth: " & iMode & vbCrLf & _
                "Chunking Limit: " & IIf(dThresholdMB > 0, dThresholdMB & " MB", "Disabled") & vbCrLf & _
-               "Incremental Cutoff: " & IIf(Year(dtCutoff) <= 1900, "Full Rewrite (No Cutoff)", Format(dtCutoff, "yyyy-mm-dd hh:mm:ss")) & vbCrLf & _
+               "Attachment Cutoff: " & IIf(Year(dtCutoff) <= 1900, "Full Download (No Cutoff)", Format(dtCutoff, "yyyy-mm-dd hh:mm:ss")) & vbCrLf & _
                "Sort Order: " & IIf(bNewestFirst, "Newest to Oldest", "Oldest to Newest") & vbCrLf & vbCrLf & _
                "Active Routing Rules:" & vbCrLf & GetActiveRoutes(sRouteIni, fso) & vbCrLf & _
                "System Files Location:" & vbCrLf & _
